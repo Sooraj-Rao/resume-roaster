@@ -57,7 +57,7 @@ export default function ResumeRoaster() {
       formData.append("mode", mode);
       formData.append("responseLength", responseLength);
 
-      const response = await axios.post(`/api/roo`, formData);
+      const response = await axios.post(`/api/roast`, formData);
 
       setResult(response.data.result);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

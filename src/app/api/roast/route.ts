@@ -136,7 +136,7 @@ const createPrompt = (
   `;
 };
 
-export const parsePdf = async (buffer: Buffer): Promise<string> => {
+const parsePdf = async (buffer: Buffer): Promise<string> => {
   return new Promise((resolve, reject) => {
     const pdfParser = new PDFParser();
 
