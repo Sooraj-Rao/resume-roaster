@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -34,7 +33,7 @@ export default function ResumeRoaster() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [mode, setMode] = useState<T_mode>("roast");
-  const [responseLength, setResponseLength] = useState<T_length>("medium");
+  const [responseLength, setResponseLength] = useState<T_length>("descriptive");
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
@@ -85,30 +84,29 @@ export default function ResumeRoaster() {
     <>
       <>
         <CustomHead
-          title="Resume Roaster | Get Honest Feedback on Your CV"
+          title="AI Resume Roaster | Get Honest Feedback on Your CV"
           description="Upload your resume and receive brutally honest feedback to improve your chances of landing your dream job. Our AI-powered tool analyzes and roasts your CV to perfection."
           canonicalUrl="https://roast.soorajrao.in/"
         />
       </>
       <div
-        className={`flex min-h-screen bg-gradient-to-br
-      sm:pt-10 sm:items-center justify-center p-4
+        className={`flex flex-col min-h-screen bg-gradient-to-br
+       items-center   gap-y-5 sm:justify-center
       from-purple-700 via-pink-400 to-red-700 
-      ${result ? "pt-10" : "pt-40"}
+      ${result ? "pt-10" : "pt-24 sm:pt-4"}
     `}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <Card
-            className={`bg-white shadow-xl max-w-7xl rounded-2xl w-full overflow-hidden
-          ${result ? "max-w-xs sm:max-w-7xl" : "sm:w-[400px]"}
+            className={`bg-white shadow-xl mb-4   sm:max-w-7xl rounded-2xl w-full overflow-hidden
+          ${result ? "max-w-xs sm:max-w-7xl" : "w-[300px] sm:w-[400px]"}
           `}
           >
             <CardHeader className="p-6">
-              <CardTitle className=" text-xl sm:text-3xl text-black/80 font-semibold text-center flex items-center justify-center">
+              <CardTitle className=" text-xl  sm:text-3xl text-black/80 font-semibold text-center flex items-center justify-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600  px-1">
+                  AI
+                </span>
                 Resume {mode === "roast" ? "Roaster" : "Feedback"}
                 {mode === "roast" ? (
                   <Flame className="ml-2 text-red-500" />
@@ -133,20 +131,21 @@ export default function ResumeRoaster() {
             <CardContent className="p-3 sm:p-6">
               {result ? (
                 <div className="space-y-6">
-                  <div className="bg-pink-50 rounded-2xl p-6 mb-6">
-                    <p className="whitespace-pre-wrap text-sm sm:text-base text-gray-800">
+                  <div className="bg-pink-50 rounded-2xl sm:p-6 p-3 mb-6">
+                    <p className="whitespace-pre-wrap text-xs sm:text-base text-gray-800">
                       <HighlightedText text={result} />
                     </p>
                   </div>
                   <p className="text-sm sm:text-base text-center mb-6 text-pink-500">
                     We just {mode === "roast" ? "roasted" : "analyzed"}:{" "}
+                    <br  className=" sm:hidden" />
                     {SliceText(file?.name || "")}
                   </p>
                   <div className="flex sm:flex-row flex-col gap-4 border-t pt-3 items-center justify-around">
                     <Button
                       variant="default"
                       onClick={resetProcess}
-                      className="w-fit text-sm sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300"
+                      className="w-fit text-sm scale-90 sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300"
                     >
                       Process Another Resume
                     </Button>
@@ -196,7 +195,7 @@ export default function ResumeRoaster() {
                       />
                       <label
                         htmlFor="file-upload"
-                        className="flex items-center justify-center px-4 py-2 border-2 border-purple-500 rounded-md cursor-pointer hover:bg-purple-50 transition-colors text-purple-700"
+                        className="flex items-center text-sm  justify-center px-4 py-2 border-2 border-purple-500 rounded-md cursor-pointer hover:bg-purple-50 transition-colors text-purple-700"
                       >
                         <FileText className="mr-2 w-5 h-5" />
                         Upload your resume (PDF)
@@ -217,11 +216,12 @@ export default function ResumeRoaster() {
                               onClick={() => setMode(item)}
                               variant={item === mode ? "default" : "ghost"}
                               key={i}
-                              className={`flex items-center space-x-2 capitalize
+                              className={`flex items-center space-x-2 capitalize shadow-md
                                 ${
                                   item === mode &&
                                   "bg-gradient-to-br from-pink-900 to-purple-800 "
                                 }
+                                
                                 `}
                             >
                               <p>{item}</p>
@@ -245,7 +245,7 @@ export default function ResumeRoaster() {
                                   item === responseLength ? "default" : "ghost"
                                 }
                                 key={i}
-                                className={`flex items-center space-x-2 capitalize
+                                className={`flex items-center space-x-2 capitalize shadow
                                   ${
                                     item === responseLength &&
                                     "bg-gradient-to-br from-pink-900 to-purple-800  "
@@ -263,7 +263,7 @@ export default function ResumeRoaster() {
                   <Button
                     onClick={processResume}
                     disabled={!file || isLoading}
-                    className="w-full bg-gradient-to-r  text-base from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+                    className="w-full  bg-gradient-to-r  text-sm  from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
                   >
                     {isLoading ? (
                       <p className="flex items-center justify-center">
@@ -281,11 +281,11 @@ export default function ResumeRoaster() {
               )}
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
         {!result && (
           <Button
             variant="ghost"
-            className="py-2 px-4 font-normal fixed bottom-5 text-white hover:text-white rounded-full flex items-center text-sm  transition duration-300"
+            className="py-2 px-4 font-normal  hover:bg-transparent  text-white hover:text-white rounded-full flex items-center text-sm  transition duration-300"
           >
             <a
               target="_blank"

@@ -3,11 +3,11 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Resume Roaster | Honest Feedback for Your CV",
+  title: "AI Resume Roaster | Honest Feedback for Your CV",
   description:
     "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
   keywords: [
-    "resume feedback",
+    "ai resume feedback",
     "CV review",
     "job application help",
     "career advice",
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://roast.soorajrao.in/",
-    siteName: "Resume Roaster",
-    title: "Resume Roaster | Honest Feedback for Your CV",
+    siteName: "AI Resume Roaster",
+    title: "AI Resume Roaster | Honest Feedback for Your CV",
     description:
       "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
     images: [
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
         url: "/home.webp",
         width: 1200,
         height: 630,
-        alt: "Resume Roaster Preview",
+        alt: "AI Resume Roaster Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Resume Roaster | Honest Feedback for Your CV",
+    title: "AI Resume Roaster | Honest Feedback for Your CV",
     description:
       "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
     images: ["/home.webp"],
@@ -73,7 +73,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Resume Roaster",
+              name: "AI Resume Roaster",
               url: "https://roast.soorajrao.in/",
               description:
                 "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
