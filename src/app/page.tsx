@@ -19,6 +19,7 @@ import {
   LoaderCircle,
   Flame,
   MessageCircle,
+  Stars,
 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import CustomHead from "@/components/custom-head";
@@ -41,7 +42,7 @@ export default function ResumeRoaster() {
       setFile(selectedFile);
       setError(null);
     } else {
-      setError("Oopsie! We only accept PDFs. Try again, smarty-pants!");
+      setError("Whoopsie! PDFs only, buddy! Try again!");
     }
   };
 
@@ -138,32 +139,33 @@ export default function ResumeRoaster() {
                   </div>
                   <p className="text-sm sm:text-base text-center mb-6 text-pink-500">
                     We just {mode === "roast" ? "roasted" : "analyzed"}:{" "}
-                    <br  className=" sm:hidden" />
+                    <br className=" sm:hidden" />
                     {SliceText(file?.name || "")}
                   </p>
                   <div className="flex sm:flex-row flex-col gap-4 border-t pt-3 items-center justify-around">
                     <Button
                       variant="default"
+                      size="lg"
                       onClick={resetProcess}
-                      className="w-fit text-sm scale-90 sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300"
+                      className="w-fit text-sm scale-90 sm:text-base bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300"
                     >
-                      Process Another Resume
+                      Process Another Resume <Stars />
                     </Button>
-                    <Button
-                      variant="ghost"
-                      className="py-2 px-4 font-normal rounded-full flex items-center text-sm  transition duration-300"
+                    <a
+                      target="_blank"
+                      href="https://soorajrao.in?ref=resume-roaster"
+                      className="
+                    
+
+                        flex items-center  relative  hover:underline underline-offset-2 group   font-normal  text-sm 
+                        "
                     >
-                      <a
-                        target="_blank"
-                        href="https://soorajrao.in?ref=resume-roaster"
-                        className="flex items-center"
-                      >
-                        Developed By
-                        <span className="text-purple-700 ml-1 flex items-center">
-                          Sooraj <ArrowDownLeft className="rotate-180 ml-1" />
-                        </span>
-                      </a>
-                    </Button>
+                      Developed By
+                      <span className="font-semibold  text-purple-700 pl-1 flex items-center">
+                        Sooraj{" "}
+                        <ArrowDownLeft className="rotate-180 pl-1 scale-0 duration-200 group-hover:scale-75 " />
+                      </span>
+                    </a>
                   </div>
                 </div>
               ) : (
@@ -172,16 +174,19 @@ export default function ResumeRoaster() {
                     <div className="flex justify-start items-center">
                       <Button
                         variant="ghost"
-                        className="bg-rose-200 hover:bg-rose-200 py-2 px-5 w-fit rounded-full"
+                        className="bg-rose-200 cursor-default hover:bg-rose-200 py-2 px-5 w-fit rounded-full"
                       >
                         {SliceText(file.name)}
                       </Button>
                       <Button
+                        disabled={isLoading}
+                        className=" rounded-full scale-90"
                         onClick={resetProcess}
                         variant="ghost"
+                        size="icon"
                         title="Remove"
                       >
-                        <X className="scale-90" />
+                        <X />
                       </Button>
                     </div>
                   ) : (
@@ -263,7 +268,7 @@ export default function ResumeRoaster() {
                   <Button
                     onClick={processResume}
                     disabled={!file || isLoading}
-                    className="w-full  bg-gradient-to-r  text-sm  from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+                    className="w-full  bg-gradient-to-r  text-sm  hover:from-purple-500 hover:to-pink-500 from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
                   >
                     {isLoading ? (
                       <p className="flex items-center justify-center">
@@ -283,21 +288,19 @@ export default function ResumeRoaster() {
           </Card>
         </div>
         {!result && (
-          <Button
-            variant="ghost"
-            className="py-2 px-4 font-normal  hover:bg-transparent  text-white hover:text-white rounded-full flex items-center text-sm  transition duration-300"
+          <a
+            target="_blank"
+            href="https://soorajrao.in?ref=resume-roaster"
+            className="flex items-center  relative group   font-normal text-white text-sm 
+             hover:underline underline-offset-2
+            "
           >
-            <a
-              target="_blank"
-              href="https://soorajrao.in?ref=resume-roaster"
-              className="flex items-center group"
-            >
-              Developed By
-              <span className="text-purple-200 font-semibold underline sm:group-hover:underline ml-1 flex items-center">
-                Sooraj <ArrowDownLeft className="rotate-180 ml-1 scale-90" />
-              </span>
-            </a>
-          </Button>
+            Developed By
+            <span className="text-purple-300 font-semibold  pl-1 flex items-center">
+              Sooraj{" "}
+              <ArrowDownLeft className="rotate-180 pl-1 scale-0 duration-200 group-hover:scale-75 " />
+            </span>
+          </a>
         )}
       </div>
     </>
@@ -313,7 +316,6 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({ text }) => {
   return (
     <>
       {parts.map((part, index) => {
-        console.log(index, part);
         if (part.startsWith("*") && part.endsWith("*")) {
           return (
             <span
