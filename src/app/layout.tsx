@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     "career advice",
     "AI resume analysis",
   ],
-  authors: [{ name: "Your Company Name" }],
-  creator: "Your Company Name",
-  publisher: "Your Company Name",
+  authors: [{ name: "Sooraj Rao" }],
+  creator: "Sooraj Rao",
+  publisher: "Sooraj Rao",
   formatDetection: {
     email: false,
     address: false,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
     images: [
       {
-        url: "/home.webp",
+        url: "https://roast.soorajrao.in/home.webp",
         width: 1200,
         height: 630,
         alt: "AI Resume Roaster Preview",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "AI Resume Roaster | Honest Feedback for Your CV",
     description:
       "Get brutally honest feedback on your resume. Our AI-powered tool roasts your CV to help you improve and stand out in the job market.",
-    images: ["/home.webp"],
+    images: ["https://roast.soorajrao.in/home.webp"],
     creator: "@SoorajRaoo",
   },
   robots: {
