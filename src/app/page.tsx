@@ -93,7 +93,7 @@ export default function ResumeRoaster() {
       <div
         className={`flex flex-col min-h-screen bg-gradient-to-br
        items-center   gap-y-5 sm:justify-center
-      from-purple-700 via-pink-400 to-red-700 
+      from-white  via-green-200 to-green-100 
       ${result ? "pt-10" : "pt-24 sm:pt-4"}
     `}
       >
@@ -105,14 +105,14 @@ export default function ResumeRoaster() {
           >
             <CardHeader className="p-6">
               <CardTitle className=" text-xl  sm:text-3xl text-black/80 font-semibold text-center flex items-center justify-center">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600  px-1">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-900 to-green-500   px-1">
                   AI
                 </span>
                 Resume {mode === "roast" ? "Roaster" : "Feedback"}
                 {mode === "roast" ? (
                   <Flame className="ml-2 text-red-500" />
                 ) : (
-                  <MessageCircle className="ml-2 text-blue-500" />
+                  <MessageCircle className="ml-2 text-red-500" />
                 )}
               </CardTitle>
               <CardDescription className="text-center scale-110 mt-2">
@@ -132,13 +132,13 @@ export default function ResumeRoaster() {
             <CardContent className="p-3 sm:p-6">
               {result ? (
                 <div className="space-y-6">
-                  <div className="bg-pink-50 rounded-2xl sm:p-6 p-3 mb-6">
+                  <div className="bg-green-50 rounded-2xl sm:p-6 p-3 mb-6">
                     <p className="whitespace-pre-wrap text-xs sm:text-base text-gray-800">
                       <HighlightedText text={result} />
                     </p>
                   </div>
-                  <p className="text-sm sm:text-base text-center mb-6 text-pink-500">
-                    We just {mode === "roast" ? "roasted" : "analyzed"}:{" "}
+                  <p className="text-sm sm:text-base font-semibold text-center mb-6 text-green-800">
+                    We just {mode === "roast" ? "roasted" : "analyzed"} - {" "}
                     <br className=" sm:hidden" />
                     {SliceText(file?.name || "")}
                   </p>
@@ -147,7 +147,7 @@ export default function ResumeRoaster() {
                       variant="default"
                       size="lg"
                       onClick={resetProcess}
-                      className="w-fit text-sm scale-90 sm:text-base bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300"
+                                        className="  bg-gradient-to-r  text-sm from-green-950  bg-black  font-semibold py-2 px-4 rounded-md "
                     >
                       Process Another Resume <Stars />
                     </Button>
@@ -161,7 +161,7 @@ export default function ResumeRoaster() {
                         "
                     >
                       Developed By
-                      <span className="font-semibold  text-purple-700 pl-1 flex items-center">
+                      <span className="font-semibold   pl-1 flex items-center">
                         Sooraj{" "}
                         <ArrowDownLeft className="rotate-180 pl-1 scale-0 duration-200 group-hover:scale-75 " />
                       </span>
@@ -174,7 +174,7 @@ export default function ResumeRoaster() {
                     <div className="flex justify-start items-center">
                       <Button
                         variant="ghost"
-                        className="bg-rose-200 cursor-default hover:bg-rose-200 py-2 px-5 w-fit rounded-full"
+                        className="bg-green-100  cursor-default hover:bg-green-100 py-2 px-5 w-fit rounded-full"
                       >
                         {SliceText(file.name)}
                       </Button>
@@ -200,7 +200,7 @@ export default function ResumeRoaster() {
                       />
                       <label
                         htmlFor="file-upload"
-                        className="flex items-center text-sm  justify-center px-4 py-2 border-2 border-purple-500 rounded-md cursor-pointer hover:bg-purple-50 transition-colors text-purple-700"
+                        className="flex items-center text-sm  justify-center px-4 py-2 border-2  rounded-md cursor-pointer hover:bg-green-50 transition-colors  "
                       >
                         <FileText className="mr-2 w-5 h-5" />
                         Upload your resume (PDF)
@@ -224,7 +224,7 @@ export default function ResumeRoaster() {
                               className={`flex items-center space-x-2 capitalize shadow-md
                                 ${
                                   item === mode &&
-                                  "bg-gradient-to-br from-pink-900 to-purple-800 "
+                                  "bg-gradient-to-tr from-black via-green-950 to-green-950 "
                                 }
                                 
                                 `}
@@ -253,7 +253,7 @@ export default function ResumeRoaster() {
                                 className={`flex items-center space-x-2 capitalize shadow
                                   ${
                                     item === responseLength &&
-                                    "bg-gradient-to-br from-pink-900 to-purple-800  "
+                                    "bg-gradient-to-tr from-black via-green-950 to-green-950  "
                                   }
                                   `}
                               >
@@ -268,7 +268,7 @@ export default function ResumeRoaster() {
                   <Button
                     onClick={processResume}
                     disabled={!file || isLoading}
-                    className="w-full  bg-gradient-to-r  text-sm  hover:from-purple-500 hover:to-pink-500 from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
+                    className="w-full  bg-gradient-to-r  text-sm from-green-950  bg-black  font-semibold py-2 px-4 rounded-md "
                   >
                     {isLoading ? (
                       <p className="flex items-center justify-center">
@@ -291,12 +291,12 @@ export default function ResumeRoaster() {
           <a
             target="_blank"
             href="https://soorajrao.in?ref=resume-roaster"
-            className="flex items-center  relative group   font-normal text-white text-sm 
+            className="flex items-center  relative group   font-normal  text-sm 
              hover:underline underline-offset-2
             "
           >
             Developed By
-            <span className="text-purple-300 font-semibold  pl-1 flex items-center">
+            <span className=" font-semibold  pl-1 flex items-center">
               Sooraj{" "}
               <ArrowDownLeft className="rotate-180 pl-1 scale-0 duration-200 group-hover:scale-75 " />
             </span>
